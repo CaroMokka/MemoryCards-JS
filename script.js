@@ -26,21 +26,17 @@ window.onload = function() {
 }
 
 function shuffleCards(){
-    setCard = cardsList.concat(cardsList);//repetira cada carta
-    console.log(setCard);
-    //shuffle = barajar 
+    setCard = cardsList.concat(cardsList);
     for(let i = 0; i < setCard.length; i++){
         let j = Math.floor(Math.random() * setCard.length);
-        //swap = intercambio de variable, reasignamos un nnuevo valor para lograr las cartas sean aleatorias
+
         let temp = setCard[i];
         setCard[i] = setCard[j];
         setCard[j] = temp;
     }
-    console.log(setCard)
 }
 
 function startGame() {
-    //arrage de vboard 4x5
     for(let i = 0; i < rows; i++){
         let row = [];
         for(let j = 0; j < cols; j++){
@@ -50,9 +46,7 @@ function startGame() {
             //example <img id="0-0" class="card" src="water..jpg"
             let card = document.createElement('img');
             card.id = i.toString() + '-' + j.toString();
-            console.log(cardImage);
             card.src = `assets/${cardImage}.jpg`;
-            console.log( card.src)
             card.classList.add('card');
             card.addEventListener('click', selectedCard);
             document.querySelector('#board').append(card);
@@ -60,7 +54,6 @@ function startGame() {
         board.push(row);
      
     }
-    console.log(board);
     setTimeout(hideCards, 1000);
   }
 
@@ -80,12 +73,10 @@ function startGame() {
             selectedCard1 = this;
 
             let coords = selectedCard1.id.split('-');
-            console.log(coords)
             let r = parseInt(coords[0]);
             let c = parseInt(coords[1]);
 
             selectedCard1.src = `/assets/${board[r][c]}.jpg`;
-            console.log(selectedCard1.src);
         } else if (!selectedCard2 && this !== selectedCard1){
             selectedCard2 = this;
 
@@ -94,7 +85,6 @@ function startGame() {
             let c = parseInt(coords[1]);
 
             selectedCard2.src = `/assets/${board[r][c]}.jpg`;
-            console.log(selectedCard2.src);
             setTimeout(update, 1000);
         }
       }
