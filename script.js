@@ -43,11 +43,18 @@ function startGame() {
         for(let j = 0; j < cols; j++){
             let cardImage = setCard.pop();
             row.push(cardImage);
-            //let board = document.querySelector('#board');
+  
+            //example <img id="0-0" class="card" src="water..jpg"
             let card = document.createElement('img');
             card.id = i.toString() + '-' + j.toString();
-
+            console.log(cardImage);
+            card.src = `assets/${cardImage}.jpg`;
+            console.log( card.src)
+            card.classList.add('card');
+            document.querySelector('#board').append(card);
         }
+        board.push(row);
+     
     }
-
+    console.log(board);
   }
